@@ -14,37 +14,37 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1/product")
 public class ProductController {
-private final ProductService productService;
-private final ProductServiceImpl productServiceImpl;
+    private final ProductService productService;
+    private final ProductServiceImpl productServiceImpl;
 
     public ProductController(ProductService productService, ProductServiceImpl productServiceImpl) {
         this.productService = productService;
         this.productServiceImpl = productServiceImpl;
     }
-@PostMapping(value = "/save")
+    @PostMapping(value = "/save")
     public ResponseEntity<ResponseDTO> saveProduct(@RequestBody @Valid ProductDTO productDTO) {
-    System.out.println(productDTO.getImage());
+        System.out.println(productDTO.getImage());
         productService.save(productDTO);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "Product Saved Successfully", null));
     }
 
-@DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<ResponseDTO> deleteProduct(@PathVariable int id) {
         productService.delete(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "Product Deleted Successfully", null));
     }
 
-@PutMapping(value = "/update/{id}")
+    @PutMapping(value = "/update/{id}")
     public ResponseEntity<ResponseDTO> updateProduct(@PathVariable int id, @RequestBody @Valid ProductDTO productDTO) {
-    System.out.println(productDTO.getImage());
+        System.out.println(productDTO.getImage());
         productServiceImpl.update(id, productDTO);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "Product Updated Successfully", null));
-}
+    }
 
-@GetMapping("/getAll")
+    @GetMapping("/getAll")
     public ResponseEntity<ResponseDTO> getAllProducts() {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "Success", productService.getAllProduct()));

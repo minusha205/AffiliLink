@@ -50,10 +50,10 @@ public class WebSecurityConfig {
                                 "/api/v1/user/delete/{id}",
                                 "/api/v1/user/update/{id}",
                                 "/api/v1/user/getAll",
-                                "api/v1/product/save",
-                                "api/v1/product/delete/{id}",
-                                "api/v1/product/update/{id}",
-                                "api/v1/product/getAllProduct"
+                                "/api/v1/product/save",
+                                "/api/v1/product/delete/{id}",
+                                "/api/v1/product/update/{id}",
+                                "/api/v1/product/getAllProduct"
 
 
                               ).permitAll()

@@ -4,117 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2>Product Management</h2>
-<form id="productForm">
-    <label for="productId">Product ID:</label>
-    <input type="number" id="productId" name="productId"><br><br>
+<div class="container">
+    <h1>Product Management</h1>
+    <form id="productForm">
+        <label for="productId">Product ID:</label>
+        <input type="number" id="productId" name="productId"><br><br>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description"></textarea><br><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
 
-    <label for="price">Price:</label>
-    <input type="number" step="0.01" id="price" name="price"><br><br>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price"><br><br>
 
-    <label for="affiliateLink">Affiliate Link:</label>
-    <input type="url" id="affiliateLink" name="affiliateLink"><br><br>
+        <label for="affiliateLink">Affiliate Link:</label>
+        <input type="url" id="affiliateLink" name="affiliateLink"><br><br>
 
-    <label for="image">Image URL:</label>
-    <input type="url" id="image" name="image"><br><br>
+        <label for="image">Image URL:</label>
+        <input type="url" id="image" name="image"><br><br>
 
-    <label for="qty">Quantity:</label>
-    <input type="number" id="qty" name="qty"><br><br>
+        <label for="qty">Quantity:</label>
+        <input type="number" id="qty" name="qty"><br><br>
 
-    <button type="button" onclick="saveProduct()">Save Product</button>
-    <button type="button" onclick="updateProduct()">Update Product</button>
-    <button type="button" onclick="deleteProduct()">Delete Product</button>
-</form>
-
-<script>
-    function saveProduct() {
-        const form = document.getElementById('productForm');
-        const formData = new FormData(form);
-
-        const productData = {
-            name: formData.get('name'),
-            description: formData.get('description'),
-            price: formData.get('price'),
-            affiliateLink: formData.get('affiliateLink'),
-            image: formData.get('image'),
-            qty: formData.get('qty')
-        };
-
-        fetch('/api/v1/product/save', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(productData)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Product saved successfully!');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error saving product.');
-            });
-    }
-
-    function updateProduct() {
-        const form = document.getElementById('productForm');
-        const formData = new FormData(form);
-
-        const productData = {
-            productId: formData.get('productId'),
-            name: formData.get('name'),
-            description: formData.get('description'),
-            price: formData.get('price'),
-            affiliateLink: formData.get('affiliateLink'),
-            image: formData.get('image'),
-            qty: formData.get('qty')
-        };
-
-        fetch(`/api/v1/product/update/${productData.productId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(productData)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Product updated successfully!');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error updating product.');
-            });
-    }
-
-    function deleteProduct() {
-        const form = document.getElementById('productForm');
-        const productId = new FormData(form).get('productId');
-
-        fetch(`/api/v1/product/delete/${productId}`, {
-            method: 'DELETE'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Product deleted successfully!');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error deleting product.');
-            });
-    }
-</script>
+        <button type="button" onclick="saveProduct()">Save Product</button>
+        <button type="button" onclick="updateProduct()">Update Product</button>
+        <button type="button" onclick="deleteProduct()">Delete Product</button>
+    </form>
+    <div id="response"></div>
+</div>
+<script src="/Frontend/js/product.js"></script>
 </body>
 </html>

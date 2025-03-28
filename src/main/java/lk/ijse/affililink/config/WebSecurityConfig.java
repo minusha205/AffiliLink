@@ -50,29 +50,13 @@ public class WebSecurityConfig {
                                 "/api/v1/user/delete/{id}",
                                 "/api/v1/user/update/{id}",
                                 "/api/v1/user/getAll",
-                                "/api/v1/hotel/save",
-                                "/api/v1/hotel/delete/{id}",
-                                "/api/v1/hotel/update/{id}",
-                                "/api/v1/hotel/getAll",
-                                "/api/v1/room/save",
-                                "/api/v1/room/delete/{id}",
-                                "/api/v1/room/update/{id}",
-                                "/api/v1/room/getAll",
-                                "/api/v1/review/save",
-                                "/api/v1/review/delete/{id}",
-                                "/api/v1/review/update/{id}",
-                                "/api/v1/review/getAll",
-                                "/api/v1/booking/save",
-                                "/api/v1/booking/delete/{id}",
-                                "/api/v1/booking/update/{id}",
-                                "/api/v1/booking/getAll",
-                                "/api/v1/payment/save",
-                                "/api/v1/payment/delete/{id}",
-                                "/api/v1/payment/update/{id}",
-                                "/api/v1/payment/getAll",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html").permitAll()
+                                "api/v1/product/save",
+                                "api/v1/product/delete/{id}",
+                                "api/v1/product/update/{id}",
+                                "api/v1/product/getAllProduct"
+
+
+                              ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

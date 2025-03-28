@@ -3,22 +3,25 @@ package lk.ijse.affililink.dto;
 public class ProductDTO {
 
     private int productId;
+    private int qty;
     private String name;
     private String description;
     private double price;
     private String affiliateLink;
-
+    private String image;
     // Default constructor
     public ProductDTO() {
     }
 
     // Constructor with fields
-    public ProductDTO(int productId, String name, String description, double price, String affiliateLink) {
+    public ProductDTO(int productId, String name, String description, double price, String affiliateLink,String image,int qty) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.affiliateLink = affiliateLink;
+        this.image = image;
+        this.qty = qty;
     }
 
     // Getters and Setters
@@ -54,6 +57,14 @@ public class ProductDTO {
         this.price = price;
     }
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
     public String getAffiliateLink() {
         return affiliateLink;
     }
@@ -61,6 +72,10 @@ public class ProductDTO {
     public void setAffiliateLink(String affiliateLink) {
         this.affiliateLink = affiliateLink;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     @Override
     public String toString() {
@@ -70,6 +85,7 @@ public class ProductDTO {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", affiliateLink='" + affiliateLink + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

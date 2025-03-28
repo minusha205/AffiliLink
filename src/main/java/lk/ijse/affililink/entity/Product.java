@@ -26,6 +26,12 @@ public class Product {
     @Column(name = "affiliate_link")
     private String affiliateLink;
 
+    @Column(name ="image" )
+    private String image;
+
+    @Column(name = "qty")
+    private int qty;
+
     @OneToMany(mappedBy = "product")
     private List<Order> orders;
 
@@ -34,11 +40,13 @@ public class Product {
     }
 
     // Constructor with fields
-    public Product(String name, String description, double price, String affiliateLink) {
+    public Product(String name, String description, double price, String affiliateLink, String image, int qty) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.affiliateLink = affiliateLink;
+        this.image = image;
+        this.qty = qty;
     }
 
     // Getters and Setters
@@ -74,6 +82,14 @@ public class Product {
         this.price = price;
     }
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
     public String getAffiliateLink() {
         return affiliateLink;
     }
@@ -81,6 +97,10 @@ public class Product {
     public void setAffiliateLink(String affiliateLink) {
         this.affiliateLink = affiliateLink;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     public List<Order> getOrders() {
         return orders;
@@ -98,6 +118,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", affiliateLink='" + affiliateLink + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

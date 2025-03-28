@@ -23,7 +23,11 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository ProductRepository;
     @Override
     public void save(ProductDTO productDTO) {
-        ProductRepository.save(modelMapper.map(productDTO, Product.class));
+        if (ProductRepository.existsById(productDTO.getProductId())) {
+            throw new RuntimeException("Item Already Exists!");
+        }
+        Product product = modelMapper.map(productDTO, Product.class);
+        ProductRepository.save(product);
 
     }
 
